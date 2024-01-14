@@ -53,7 +53,7 @@ def main() -> None:
             st.write(st.session_state.data.head())
             regression_logistique()
 
-    # TODO
+    # TODO ajouter individu via un appel à une fonction :)
     # Affichage de la possibilité d'ajouter un individu
     if menu == "add":
         "# ➕ Ajouter un individu"
