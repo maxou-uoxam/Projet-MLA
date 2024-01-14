@@ -15,7 +15,7 @@ menu = [
         'id': "régression"
     },
     {
-        'label': "Ajouter un individu",
+        'label': "Tester un nouvel individu",
         'icon': "➕",
         'id': "add"
     }
