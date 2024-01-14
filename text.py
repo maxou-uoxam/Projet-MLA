@@ -89,5 +89,45 @@ Le fichier code_text.py permet d'afficher le code dans les pages en allégeant l
 presentation_data = """
 ## Description des données :
 
-Voulant proposer le choix entre plusieurs sources de données, il nous est difficle de présenter toutes les données.
+Nous utilisons le dataset "titanic" de la bibliothèque seaborn.\\
+Cette ensemble est souvent utilisé pour l'apprentissage automatique ce qui nous as rassuré sur le choix de ce dataset.\\
+De plus, il offre un aperçu fascinant des sur les passagers du RMS Titanic lors de son fatal voyage de 1912.\\
+
+Maxime ayant visité l'exposition sur le titanic à Paris, c'est assez sympa de travailler sur ce sujet.\\
+
+### Origine historique :
+Les données proviennent du RMS Titanic qui est un paquebot transatlantique britannique qui a sombré
+après avoir heurté un iceberg entraînant la mort de plus de 1 500 personnes sur 2 224.\\
+Nous pensons généralement que les personnes de première classe ont pu survivre avec un accès prioritaire aux
+bateaux, également, nous pensons que les enfants et les femmes ont eu la piorité également.\\
+**La richesse donne-t-elle un droit de survie ou non ?**\\
+**Est-ce que face à la détresse, la règle des enfants et les femmes d'abord a été appliquée ou non ?**
+
+### Explications colonnes :
+Il y a 3 variables catégorielles:
+- **sex**.
+- **class** qui est la classe.
+- **embarked_town** qui est le port d'embarquement.
+- **who**.
+On peut comprendre **who** comme suit :
+- **child** si l'individu était enfant (<18).
+- **man** si l'individu était homme.
+- **woman** si il/elle était une femme.
+Et 5 variables quantitatives :
+- **age**.
+- **sibsp** nombre de frères et sœurs vivants.
+- **parch** nombre de parents vivants.
+- **fare** prix payé.
+- **pclass**
+- **alone**
+
+Normalement, nous aurions dû encoder les variables catégorielles, mais le fichier de seaborn est déjà traité.
+**pclass** correspond à la class :
+- 1 -> *First*
+- 2 -> *Second*
+- 3 -> *Third*
+**adult_male** :
+- True -> Si c'est un adulte et un homme
+- False -> Si c'est une femme ou un enfant.
+**embarked** : Diminutif du port d'embarquement.
 """
