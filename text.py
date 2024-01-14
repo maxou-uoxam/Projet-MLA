@@ -92,8 +92,7 @@ presentation_data = """
 Nous utilisons le dataset "titanic" de la bibliothèque seaborn.\\
 Cette ensemble est souvent utilisé pour l'apprentissage automatique ce qui nous as rassuré sur le choix de ce dataset.\\
 De plus, il offre un aperçu fascinant des sur les passagers du RMS Titanic lors de son fatal voyage de 1912.\\
-
-Maxime ayant visité l'exposition sur le titanic à Paris, c'est assez sympa de travailler sur ce sujet.\\
+Maxime ayant visité l'exposition sur le titanic à Paris, c'est assez sympa de travailler sur ce sujet.
 
 ### Origine historique :
 Les données proviennent du RMS Titanic qui est un paquebot transatlantique britannique qui a sombré
@@ -113,21 +112,24 @@ On peut comprendre **who** comme suit :
 - **child** si l'individu était enfant (<18).
 - **man** si l'individu était homme.
 - **woman** si il/elle était une femme.
+
 Et 5 variables quantitatives :
 - **age**.
-- **sibsp** nombre de frères et sœurs vivants.
-- **parch** nombre de parents vivants.
+- **sibsp** : nombre de frères et sœurs vivants.
+- **parch** : nombre de parents vivants.
 - **fare** prix payé.
 - **pclass**
 - **alone**
 
-Normalement, nous aurions dû encoder les variables catégorielles, mais le fichier de seaborn est déjà traité.
+Normalement, nous aurions dû encoder les variables catégorielles, mais le fichier de seaborn est déjà traité.\\
 **pclass** correspond à la class :
 - 1 -> *First*
 - 2 -> *Second*
 - 3 -> *Third*
+
 **adult_male** :
 - True -> Si c'est un adulte et un homme
 - False -> Si c'est une femme ou un enfant.
+
 **embarked** : Diminutif du port d'embarquement.
 """
