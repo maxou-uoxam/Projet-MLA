@@ -39,6 +39,7 @@ def main() -> None:
     if menu == "data":
         "# 📖 Lecture des données"
         st.session_state.data = load_data()
+        st.session_state.data = st.session_state.data.drop(columns=['sex', 'embarked', 'who', 'embark_town'])
         print_data(st.session_state.data)
         st.write(text.presentation_data)
         print_code(code_text.load_data, "load_data", True)
@@ -52,6 +53,7 @@ def main() -> None:
         else:
             st.write(st.session_state.data.head())
             regression_logistique()
+        print_code(code_text.regression_logistique, "regression_logistique", True)
 
     # TODO ajouter individu via un appel à une fonction :)
     # Affichage de la possibilité d'ajouter un individu
@@ -61,6 +63,7 @@ def main() -> None:
             st.write("# Veuillez entraîner le modèle dans l'onglet Régression logistique.")
         else:
             add_individual(st.session_state.lr_model)
+        print_code(code_text.add_individual, "add_individual", True)
 
 
 def print_code(text: str, key: str, separator: bool = False, show_code_by_default: bool = True) -> None:
@@ -133,6 +136,8 @@ def regression_logistique() -> None:
     # Création et ajustement du modèle de régression logistique
     lr = LogisticRegression()
     lr.fit(X_train, y_train)
+    # Sauvegarder le modèle dans st.session_state
+    st.session_state.lr_model = lr
 
     # Prédiction et évaluation du modèle
     y_pred = lr.predict(X_test)
@@ -151,29 +156,21 @@ def regression_logistique() -> None:
     pairplot_data = pd.concat([X[numerical_columns], y], axis=1)
 
     # Pairplot
-    fig = sns.pairplot(pairplot_data, hue=target_variable)
-
-    # Sauvegarder le modèle dans st.session_state
-    st.session_state.lr_model = lr
-
-    # Affichage des caractéristiques et de leurs coefficients
-    # st.subheader("Caractéristiques et coefficients du modèle de régression logistique")
-    # feature_names = X_train.columns
-    # coefficients = lr.coef_[0]
-
-    # for feature, coef in zip(feature_names, coefficients):
-    #     st.write(f"{feature}: {coef}")
-    
+    fig = sns.pairplot(pairplot_data, hue=target_variable, height=1.5, aspect=1)
     st.pyplot(fig)
 
     # Graphique de répartition de la variable cible
     st.subheader("Graphique de répartition de la variable cible")
-    fig, ax = plt.subplots()
+    fig, ax = plt.subplots(figsize=(6, 4))
     sns.countplot(x=target_variable, data=st.session_state.data, ax=ax)
     st.pyplot(fig)
 
-def add_individual(lr_model):
-    "# ➕ Ajouter un individu"
+
+def add_individual(lr_model) -> None:
+    """
+    Cette méthode permet de tester un individu par rapport au modèle que nous avons créé.
+    """
+    "# Ajouter un individu"
 
     # Collecte des données de l'individu
     age = st.slider("Age de l'individu", min_value=1, max_value=100, value=30)
@@ -202,9 +199,10 @@ def add_individual(lr_model):
     st.subheader("Prédiction de l'appartenance de l'individu")
     # Modification du texte en fonction de la prédiction
     if prediction[0] == 1:
-        st.write(f"L'individu est prédit comme étant : vivant(e)")
+        st.write("L'individu est prédit comme étant : vivant(e)")
     else:
-        st.write(f"L'individu est prédit comme étant : mort(e)")
+        st.write("L'individu est prédit comme étant : mort(e)")
+
 
 if __name__ == "__main__":
     main()
